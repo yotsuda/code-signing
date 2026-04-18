@@ -78,18 +78,16 @@ policy XML. Adding the certificate to the policy means future updates of
 yotsuda OSS binaries pass WDAC without per-version hash exceptions.
 
 ```powershell
-# Generate a publisher rule from the .cer
-$rule = New-CIPolicyRule `
+# Add a User-mode signer rule to your existing WDAC policy XML, derived
+# directly from the .cer
+Add-SignerRule `
+    -FilePath YourExistingPolicy.xml `
     -CertificatePath yotsuda.cer `
-    -Level Publisher
+    -User
 
-# Merge into the existing WDAC policy XML
-Merge-CIPolicy `
-    -PolicyPaths YourExistingPolicy.xml, NewRule.xml `
-    -OutputFilePath MergedPolicy.xml
-
+# Convert the updated policy XML to the binary form WDAC enforces
 ConvertFrom-CIPolicy `
-    -XmlFilePath MergedPolicy.xml `
+    -XmlFilePath YourExistingPolicy.xml `
     -BinaryFilePath SiPolicy.p7b
 # Then deploy SiPolicy.p7b via your usual mechanism (GPO / Intune / etc.)
 ```
