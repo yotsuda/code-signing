@@ -18,9 +18,9 @@ public key only.
 | Subject | `CN=yotsuda, O=Yoshifumi Tsuda, C=JP` |
 | Issuer | self (same as Subject) |
 | Key | RSA 4096, SHA-256 |
-| Validity | (filled in after generation) |
-| Thumbprint (SHA-1) | (filled in after generation) |
-| Thumbprint (SHA-256) | (filled in after generation) |
+| Validity | 2026-04-18 to 2036-04-18 |
+| Thumbprint (SHA-1) | `74E5208228DFB12A067747D536BF497B6E98C73C` |
+| Thumbprint (SHA-256) | `ABCE0AFEE35BD19EE1DF8F16E64436439516DDC3FD40229EA7786A8B23BC8013` |
 
 The thumbprints are also published in every signed release's notes — verify
 them before trusting the certificate.
